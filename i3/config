@@ -1,0 +1,218 @@
+#Default mod key (Mod4 - Super, Mod1 - Alt)
+set $mod Mod4
+
+#Font for window titles. Will also be used by the bar unless a different font is used in the bar {} block below.
+font pango:SF Pro Text Medium 10
+
+#Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+#Start a terminal
+bindsym $mod+Return exec termite
+
+#Kill focused window
+bindsym Ctrl+Shift+q kill
+
+#Start dmenu or rofi or morc_menu (a program launcher)
+bindsym $mod+n exec --no-startup-id networkmanager_dmenu -l 12 -x 910 -y 50 -w 406
+bindsym $mod+d exec --no-startup-id rofi -show drun -theme android_notification -font "SF Pro Text Medium 11"
+
+#Change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+#Alternatively, you can use the cursor keys:
+bindsym Ctrl+$mod+Left focus left
+bindsym Ctrl+$mod+Down focus down
+bindsym Ctrl+$mod+Up focus up
+bindsym Ctrl+$mod+Right focus right
+
+#Move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+#Alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+#Split in vertical orientation
+bindsym $mod+v split v
+
+#Enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+#Change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+#Toggle tiling / floating
+bindsym $mod+space floating toggle
+
+#Change focus between tiling / floating windows
+#bindsym $mod+Shift+space focus mode_toggle
+
+#Focus the parent container
+bindsym $mod+a focus parent
+
+#Focus the child container
+#bindsym $mod+d focus child
+
+
+#Define names for default workspaces for which we configure key bindings later on.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+#Switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+#Move focused to nearest workspaces
+bindsym $mod+Left workspace prev
+bindsym $mod+Right workspace next
+
+#Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+#Move workspaces to another monitor
+bindsym $mod+Shift+n move workspace to output left
+bindsym $mod+Shift+m move workspace to output left
+
+#Reload the configuration file
+#bindsym $mod+Shift+c reload
+
+#Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+#Exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+#Resize window (you can also use the mouse for that)
+mode "resize" 
+{
+        # These bindings trigger as soon as you enter the resize mode
+
+        #Pressing left will shrink the window’s width.
+        #Pressing right will grow the window’s width.
+        #Pressing up will shrink the window’s height.
+        #Pressing down will grow the window’s height.
+        bindsym j resize shrink width 8 px or 2 ppt
+        bindsym k resize grow height 8 px or 2 ppt
+        bindsym l resize shrink height 8 px or 2 ppt
+        bindsym semicolon resize grow width 8 px or 2 ppt
+
+        #Same bindings, but for the arrow keys
+        bindsym Left resize shrink width 8 px or 2 ppt
+        bindsym Down resize grow height 8 px or 2 ppt
+        bindsym Up resize shrink height 8 px or 2 ppt
+        bindsym Right resize grow width 8 px or 2 ppt
+
+        #Back to normal
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+
+#My add-ons:
+
+#Autostart
+exec /home/kuba/.local/share/applications/pcloud.appimage
+exec_always --no-startup-id feh --bg-fill /home/kuba/Obrazy/Obrazy/anime-girl.png
+exec setxkbmap pl
+exec polybar example
+exec --no-startup-id compton
+
+#Assigns
+assign [class="discord"] workspace $ws10
+assign [class="Steam"] workspace $ws9
+assign [class="pcloud"] workspace $ws8
+for_window [class="Gnome-calculator"] floating enable
+
+#Binds
+bindsym $mod+g exec --no-startup-id chromium
+bindsym $mod+o exec --no-startup-id discord
+bindsym $mod+p exec --no-startup-id pcmanfm
+bindsym $mod+Shift+o exec --no-startup-id /home/kuba/.local/share/applications/pcloud.appimage
+bindsym $mod+Shift+p exec --no-startup-id pcmanfm /home/kuba/pCloudDrive
+bindsym Ctrl+Print exec scrot '%Y%m%d_%H%M%S.png' -e 'mv $f /home/kuba/Obrazy/ScreenShots/'
+bindsym $mod+Shift+c exec compton
+bindsym $mod+Shift+v exec killall compton
+bindsym $mod+minus gaps inner all minus 4
+bindsym $mod+equal gaps inner all plus 4
+
+bindcode $mod+34 exec polybar example
+bindcode $mod+35 exec killall polybar
+bindcode $mod+Shift+35 exec killall polybar && exec polybar example
+
+#Border & Title
+for_window [class="^.*"] border pixel 1, title_format " %title "
+gaps inner 10
+gaps outer 0
+
+#Backlight
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+
+#Audio
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +2%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -2%
+bindsym XF86AudioMicMute exec pactl set-source-mute 1 toggle
+
+#Colors
+#class                          border          background      text            indicator       child_border
+client.focused                  #4f565c         #000000         #ffff33         $coloratt       #4f565c
+client.focused_inactive         #4f565c         #000000         #ffff33         $coloratt       #4f565c
+client.unfocused                #4f565c         #000000         #888888         $coloratt       #4f565c
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
