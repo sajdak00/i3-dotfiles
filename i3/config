@@ -1,39 +1,49 @@
-#Default mod key (Mod4 - Super, Mod1 - Alt)
+#=======================================
+#=======================================
+#
+#      sajdak00's i3 config file
+#
+#=======================================
+#=======================================
+
+
+
+#Default mod key (Mod4 - Super/Meta, Mod1 - Alt)
 set $mod Mod4
 
 #Font for window titles. Will also be used by the bar unless a different font is used in the bar {} block below.
-font pango:SF Pro Text Medium 10
+font pango:SF Pro Text Medium 11
 
 #Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 #Start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec st
 
 #Kill focused window
 bindsym Ctrl+Shift+q kill
 
-#Start dmenu or rofi or morc_menu (a program launcher)
-bindsym $mod+n exec --no-startup-id networkmanager_dmenu -l 12 -x 910 -y 50 -w 406
-bindsym $mod+d exec --no-startup-id rofi -show drun -theme android_notification -font "SF Pro Text Medium 11"
+#Start dmenu or rofi (a program launcher)
+bindsym $mod+n exec --no-startup-id networkmanager_dmenu
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 #Change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 #Alternatively, you can use the cursor keys:
-bindsym Ctrl+$mod+Left focus left
-bindsym Ctrl+$mod+Down focus down
-bindsym Ctrl+$mod+Up focus up
-bindsym Ctrl+$mod+Right focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
 #Move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 #Alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -41,11 +51,11 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+h split h
+#Split in horizontal orientation
+bindsym $mod+Mod1+h split h
 
 #Split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+Mod1+v split v
 
 #Enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -93,8 +103,8 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 #Move focused to nearest workspaces
-bindsym $mod+Left workspace prev
-bindsym $mod+Right workspace next
+bindsym Ctrl+$mod+Left workspace prev
+bindsym Ctrl+$mod+Right workspace next
 
 #Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -130,10 +140,10 @@ mode "resize"
         #Pressing right will grow the window’s width.
         #Pressing up will shrink the window’s height.
         #Pressing down will grow the window’s height.
-        bindsym j resize shrink width 8 px or 2 ppt
-        bindsym k resize grow height 8 px or 2 ppt
-        bindsym l resize shrink height 8 px or 2 ppt
-        bindsym semicolon resize grow width 8 px or 2 ppt
+        bindsym h resize shrink width 8 px or 2 ppt
+        bindsym j resize grow height 8 px or 2 ppt
+        bindsym k resize shrink height 8 px or 2 ppt
+        bindsym l resize grow width 8 px or 2 ppt
 
         #Same bindings, but for the arrow keys
         bindsym Left resize shrink width 8 px or 2 ppt
@@ -143,6 +153,7 @@ mode "resize"
 
         #Back to normal
         bindsym Escape mode "default"
+		bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -151,40 +162,41 @@ bindsym $mod+r mode "resize"
 #My add-ons:
 
 #Autostart
-exec /home/kuba/.local/share/applications/pcloud.appimage
-exec_always --no-startup-id feh --bg-fill /home/kuba/Obrazy/Obrazy/anime-girl.png
-exec setxkbmap pl
-exec polybar example
-exec --no-startup-id compton
+#exec setxkbmap pl
+#exec /home/kuba/.config/polybar/launch.sh
+#exec killall conky
+#exec picom
+#exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+#exec_always xwallpaper --zoom /home/kuba/Obrazy/Obrazy/brown-mountains.jpg
+#exec_always xset b off
 
 #Assigns
-assign [class="discord"] workspace $ws10
+assign [class="Discord"] workspace $ws10
 assign [class="Steam"] workspace $ws9
-assign [class="pcloud"] workspace $ws8
 for_window [class="Gnome-calculator"] floating enable
+for_window [class="scrcpy"] floating enable
 
 #Binds
-bindsym $mod+g exec --no-startup-id chromium
-bindsym $mod+o exec --no-startup-id discord
-bindsym $mod+p exec --no-startup-id pcmanfm
-bindsym $mod+Shift+o exec --no-startup-id /home/kuba/.local/share/applications/pcloud.appimage
-bindsym $mod+Shift+p exec --no-startup-id pcmanfm /home/kuba/pCloudDrive
+bindsym $mod+g exec chromium
+bindsym $mod+p exec pcmanfm
+bindsym $mod+b exec st fff
+bindsym $mod+q exec qutebrowser
+bindsym $mod+minus gaps inner all minus 5
+bindsym $mod+equal gaps inner all plus 5
 bindsym Ctrl+Print exec scrot '%Y%m%d_%H%M%S.png' -e 'mv $f /home/kuba/Obrazy/ScreenShots/'
-bindsym $mod+Shift+c exec compton
-bindsym $mod+Shift+v exec killall compton
-bindsym $mod+minus gaps inner all minus 4
-bindsym $mod+equal gaps inner all plus 4
 
-bindcode $mod+34 exec polybar example
-bindcode $mod+35 exec killall polybar
-bindcode $mod+Shift+35 exec killall polybar && exec polybar example
+bindcode $mod+34 exec picom
+bindcode $mod+35 exec killall picom
+bindcode $mod+Shift+35 exec /home/kuba/.config/polybar/launch.sh
 
 #Border & Title
-for_window [class="^.*"] border pixel 1, title_format " %title "
+for_window [class="^.*"] border pixel 0, title_format " %title "
 gaps inner 10
 gaps outer 0
 
 #Backlight
+bindsym XF86MonBrightnessUp exec brightnessctl s +10%
+bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
 #bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 #bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
@@ -194,25 +206,14 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +2%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -2%
 bindsym XF86AudioMicMute exec pactl set-source-mute 1 toggle
 
+#Scripts
+exec_always /home/kuba/.config/autostart/mouse.sh
+exec /home/kuba/.config/autostart/brightnessctl.sh
+exec /home/kuba/.config/autostart/blankscreenoff.sh
+exec /home/kuba/.config/autostart/autostart.sh
+
 #Colors
 #class                          border          background      text            indicator       child_border
 client.focused                  #4f565c         #000000         #ffff33         $coloratt       #4f565c
 client.focused_inactive         #4f565c         #000000         #ffff33         $coloratt       #4f565c
 client.unfocused                #4f565c         #000000         #888888         $coloratt       #4f565c
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
