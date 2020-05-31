@@ -1,9 +1,13 @@
 #!/bin/bash
 
-MENU=MENU="$(rofi -sep "|" -dmenu -i -p 'System' -location 3 -xoffset -20 -yoffset 50 -width 20 -hide-scrollbar -line-padding 4 -padding 20 -lines 4 <<< "> Lock|> Logout|> Reboot|> Shutdown")"
+MENU="$(printf "Lock\nLogout\nReboot\nShutdown" | dmenu -i -p 'System')"
 case "$MENU" in
-  *Lock) i3lock ;;
-  *Logout) openbox --exit;;
-  *Reboot) reboot ;;
-  *Shutdown) shutdown now
+	Lock) i3exit lock
+	;; # -i = path/to/image.png || -c = rrggbb
+	Logout) i3exit logout
+	;;
+	Reboot) i3exit reboot
+	;;
+	Shutdown) i3exit shutdown now
+	;;
 esac

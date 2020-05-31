@@ -1,14 +1,23 @@
-#=======================================
-#=======================================
-#
-#      sajdak00's i3 config file
-#
-#=======================================
-#=======================================
+#   _   ____                                         
+#  (_) |___ \                                        
+#   _    __) |  ______    __ _    __ _   _ __    ___ 
+#  | |  |__ <  |______|  / _` |  / _` | | '_ \  / __|
+#  | |  ___) |          | (_| | | (_| | | |_) | \__ \
+#  |_| |____/            \__, |  \__,_| | .__/  |___/
+#                         __/ |         | |          
+#                        |___/          |_|
 
 
 
-#Default mod key (Mod4 - Super/Meta, Mod1 - Alt)
+#  ___  ___      _       
+#  |  \/  |     (_)      
+#  | .  . | __ _ _ _ __  
+#  | |\/| |/ _` | | '_ \ 
+#  | |  | | (_| | | | | |
+#  \_|  |_/\__,_|_|_| |_|
+
+
+#Default mod key (Mod4 - Super/Meta, Mod1 - AltL)
 set $mod Mod4
 
 #Font for window titles. Will also be used by the bar unless a different font is used in the bar {} block below.
@@ -26,6 +35,16 @@ bindsym Ctrl+Shift+q kill
 #Start dmenu or rofi (a program launcher)
 bindsym $mod+n exec --no-startup-id networkmanager_dmenu
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+
+
+#  ___  ___                   _______                   
+#  |  \/  |                  / /  ___|                  
+#  | .  . | _____   _____   / /| |_ ___   ___ _   _ ___ 
+#  | |\/| |/ _ \ \ / / _ \ / / |  _/ _ \ / __| | | / __|
+#  | |  | | (_) \ V /  __// /  | || (_) | (__| |_| \__ \
+#  \_|  |_/\___/ \_/ \___/_/   \_| \___/ \___|\__,_|___/                                                     
+
 
 #Change focus
 bindsym $mod+h focus left
@@ -51,6 +70,21 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+#Change focus between tiling / floating windows
+#bindsym $mod+Shift+space focus mode_toggle
+
+
+
+#   _                             _   
+#  | |                           | |  
+#  | |     __ _ _   _  ___  _   _| |_ 
+#  | |    / _` | | | |/ _ \| | | | __|
+#  | |___| (_| | |_| | (_) | |_| | |_ 
+#  \_____/\__,_|\__, |\___/ \__,_|\__|
+#                __/ |                
+#               |___/
+
+
 #Split in horizontal orientation
 bindsym $mod+Mod1+h split h
 
@@ -68,14 +102,22 @@ bindsym $mod+e layout toggle split
 #Toggle tiling / floating
 bindsym $mod+space floating toggle
 
-#Change focus between tiling / floating windows
-#bindsym $mod+Shift+space focus mode_toggle
-
 #Focus the parent container
 bindsym $mod+a focus parent
 
 #Focus the child container
 #bindsym $mod+d focus child
+
+
+
+#   _    _            _                                  
+#  | |  | |          | |                                 
+#  | |  | | ___  _ __| | _____ _ __   __ _  ___ ___  ___ 
+#  | |/\| |/ _ \| '__| |/ / __| '_ \ / _` |/ __/ _ \/ __|
+#  \  /\  / (_) | |  |   <\__ \ |_) | (_| | (_|  __/\__ \
+#   \/  \/ \___/|_|  |_|\_\___/ .__/ \__,_|\___\___||___/
+#                             | |                        
+#                             |_|
 
 
 #Define names for default workspaces for which we configure key bindings later on.
@@ -122,6 +164,16 @@ bindsym $mod+Shift+0 move container to workspace 10
 bindsym $mod+Shift+n move workspace to output left
 bindsym $mod+Shift+m move workspace to output left
 
+
+
+#  ______          _             _   
+#  | ___ \        | |           | |  
+#  | |_/ /___  ___| |_ __ _ _ __| |_ 
+#  |    // _ \/ __| __/ _` | '__| __|
+#  | |\ \  __/\__ \ || (_| | |  | |_ 
+#  \_| \_\___||___/\__\__,_|_|   \__|
+
+
 #Reload the configuration file
 #bindsym $mod+Shift+c reload
 
@@ -130,6 +182,17 @@ bindsym $mod+Shift+r restart
 
 #Exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+
+
+#  ______          _         
+#  | ___ \        (_)        
+#  | |_/ /___  ___ _ _______ 
+#  |    // _ \/ __| |_  / _ \
+#  | |\ \  __/\__ \ |/ /  __/
+#  \_| \_\___||___/_/___\___|
+#
+
 
 #Resize window (you can also use the mouse for that)
 mode "resize" 
@@ -159,19 +222,25 @@ mode "resize"
 bindsym $mod+r mode "resize"
 
 
-#My add-ons:
+
+#  ___  ___                  _     _                 
+#  |  \/  |                 | |   | |                
+#  | .  . |_   _    __ _  __| | __| | ___  _ __  ___ 
+#  | |\/| | | | |  / _` |/ _` |/ _` |/ _ \| '_ \/ __|
+#  | |  | | |_| | | (_| | (_| | (_| | (_) | | | \__ \
+#  \_|  |_/\__, |  \__,_|\__,_|\__,_|\___/|_| |_|___/
+#           __/ |                                    
+#          |___/
+
 
 #Autostart
-#exec setxkbmap pl
-#exec /home/kuba/.config/polybar/launch.sh
-#exec killall conky
-#exec picom
-#exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-#exec_always xwallpaper --zoom /home/kuba/Obrazy/Obrazy/brown-mountains.jpg
-#exec_always xset b off
+exec ~/.shellscripts/autostart.sh				#autostart
+#exec ~/.shellscripts/Wallpaper-Battery/wallpaper-battery.sh	#wallpaper changes while battery is discharging
+exec ~/.shellscripts/wallpaper.sh				#wallpaper
+exec ~/.shellscripts/mouse.sh				#mouse sensitivity
 
 #Assigns
-assign [class="Discord"] workspace $ws10
+assign [class="discord"] workspace $ws10
 assign [class="Steam"] workspace $ws9
 for_window [class="Gnome-calculator"] floating enable
 for_window [class="scrcpy"] floating enable
@@ -179,15 +248,15 @@ for_window [class="scrcpy"] floating enable
 #Binds
 bindsym $mod+g exec chromium
 bindsym $mod+p exec pcmanfm
+bindsym $mod+m exec mousepad
 bindsym $mod+b exec st fff
-bindsym $mod+q exec qutebrowser
 bindsym $mod+minus gaps inner all minus 5
 bindsym $mod+equal gaps inner all plus 5
-bindsym Ctrl+Print exec scrot '%Y%m%d_%H%M%S.png' -e 'mv $f /home/kuba/Obrazy/ScreenShots/'
-
-bindcode $mod+34 exec picom
-bindcode $mod+35 exec killall picom
-bindcode $mod+Shift+35 exec /home/kuba/.config/polybar/launch.sh
+bindsym Ctrl+Print exec scrot '%Y%m%d_%H%M%S.png' -e 'mv $f ~/Obrazy/ScreenShots/'
+bindcode $mod+34 exec picom		 #34 - [
+bindcode $mod+35 exec killall picom	 #35 - ]
+bindcode $mod+Shift+35 exec ~/.config/polybar/launch.sh
+bindcode $mod+Shift+34 exec ~/.shellscripts/mouse.sh
 
 #Border & Title
 for_window [class="^.*"] border pixel 0, title_format " %title "
@@ -206,11 +275,6 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +2%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -2%
 bindsym XF86AudioMicMute exec pactl set-source-mute 1 toggle
 
-#Scripts
-exec_always /home/kuba/.config/autostart/mouse.sh
-exec /home/kuba/.config/autostart/brightnessctl.sh
-exec /home/kuba/.config/autostart/blankscreenoff.sh
-exec /home/kuba/.config/autostart/autostart.sh
 
 #Colors
 #class                          border          background      text            indicator       child_border
