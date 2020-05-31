@@ -7,4 +7,4 @@ Terminal: st (Luke Smith's fork) <br />
 Terminal text editor: Kakoune <br />
 Browser: Chromium <br />
 
-![Screenshot](/home/kuba/Obrazy/Obrazy/stairs-and-forest.jpg)
+![Screenshot](https://github.com/sajdak00/i3-dotfiles/blob/master/stairs-and-forest.jpg)
