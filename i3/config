@@ -161,8 +161,8 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 #Move workspaces to another monitor
-bindsym $mod+Shift+n move workspace to output left
-bindsym $mod+Shift+m move workspace to output left
+bindcode $mod+Shift+59 move workspace to output left #59 - <
+bindcode $mod+Shift+60 move workspace to output left #60 - >
 
 
 
@@ -243,7 +243,6 @@ exec ~/.shellscripts/mouse.sh				#mouse sensitivity
 assign [class="discord"] workspace $ws10
 assign [class="Steam"] workspace $ws9
 for_window [class="Gnome-calculator"] floating enable
-for_window [class="scrcpy"] floating enable
 
 #Binds
 bindsym $mod+g exec chromium
@@ -257,6 +256,7 @@ bindcode $mod+34 exec picom		 #34 - [
 bindcode $mod+35 exec killall picom	 #35 - ]
 bindcode $mod+Shift+35 exec ~/.config/polybar/launch.sh
 bindcode $mod+Shift+34 exec ~/.shellscripts/mouse.sh
+bindcode $mod+Shift+51 exec ~/.shellscripts/mtpmount.sh
 
 #Border & Title
 for_window [class="^.*"] border pixel 0, title_format " %title "
@@ -268,6 +268,8 @@ bindsym XF86MonBrightnessUp exec brightnessctl s +10%
 bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
 #bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 #bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym Ctrl+XF86MonBrightnessUp exec xrandr --output eDP --brightness 1
+bindsym Ctrl+XF86MonBrightnessDown exec xrandr --output eDP --brightness 0.5
 
 #Audio
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
