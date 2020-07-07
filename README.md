@@ -7,4 +7,4 @@ Terminal: st (Luke Smith's fork) <br />
 Terminal text editor: Kakoune <br />
 Browser: Chromium <br />
 
-![Screenshot](https://raw.githubusercontent.com/sajdak00/i3-dotfiles/master/20200531_123624.png)
+![Screenshot](https://raw.githubusercontent.com/sajdak00/screenshots/master/20200531_123624.png)
